@@ -1,0 +1,18 @@
+TestID,Endpoint,Method,Description,Input,ExpectedResult
+S1,/api/students,POST,Create valid student,Valid JSON,200 OK
+S2,/api/students,GET,Get all students,None,200 OK
+S3,/api/students/{id},GET,Get student by id,Valid id,200 OK
+S4,/api/students,PUT,Update student,Valid JSON with id,200 OK
+S5,/api/students/{id},DELETE,Delete student,Valid id,200 OK
+S6,/api/students,POST,Reject GPA above 4.0,gpa = 4.5,400 Bad Request
+S7,/api/students,POST,Reject GPA below 0.0,gpa = -1.0,400 Bad Request
+S8,/api/students,POST,Reject name longer than 255,name >255 chars,400 Bad Request
+C1,/api/courses,POST,Create valid course,Valid JSON,200 OK
+C2,/api/courses,GET,Get all courses,None,200 OK
+C3,/api/courses/{id},PUT,Update course,Valid JSON,200 OK
+C4,/api/courses,POST,Reject invalid max size,maxSize = 0,400 Bad Request
+C5,/api/courses,POST,Reject course name longer than 255,name >255 chars,400 Bad Request
+E1,/api/courses/addStudent/{courseId},PUT,Add student to course,Valid student id in body,200 OK
+E2,/api/courses/removeStudent/{courseId},PUT,Remove student from course,Valid student id in body,200 OK
+E3,/api/courses/getEnrollment/{courseId},GET,Get enrollment count,Valid course id,200 OK
+E4,/api/courses/addStudent/{courseId},PUT,Reject add when course full,Full course,400 Bad Request
